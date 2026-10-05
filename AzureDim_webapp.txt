@@ -7,6 +7,6 @@ Integrantes:
 - Lucas Fortes de Lima - RM 559523
 - Jonathan Moreira Gomes - RM 565060
 
-Link do GitHub: COLE_AQUI_O_LINK_DO_GITHUB
+Link do GitHub: https://github.com/kaiky06301/dimdim-webapp
 
 Link do Vídeo: COLE_AQUI_O_LINK_DO_VIDEO
