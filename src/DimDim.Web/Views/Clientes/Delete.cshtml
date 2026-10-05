@@ -1,0 +1,17 @@
+@model Cliente
+@{
+    ViewData["Title"] = "Excluir cliente";
+}
+
+<h2 class="fw-bold mb-3">Excluir cliente</h2>
+<div class="dd-card p-4">
+    <p>Confirma a exclusão de <strong>@Model.Nome</strong> (CPF @Model.Cpf)?</p>
+    @if (Model.Contas.Count > 0)
+    {
+        <div class="alert alert-warning">As @Model.Contas.Count conta(s) desse cliente também serão excluídas (ON DELETE CASCADE).</div>
+    }
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a class="btn btn-link" asp-action="Index">Cancelar</a>
+    </form>
+</div>

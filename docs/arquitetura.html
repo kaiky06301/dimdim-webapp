@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Arquitetura DimDim</title>
+<style>
+  body { margin:0; font-family: "Segoe UI", Arial, sans-serif; background:#fff; color:#222; }
+  #c { width:1400px; height:820px; position:relative; }
+  h1 { position:absolute; left:40px; top:18px; margin:0; font-size:26px; }
+  h1 small { font-weight:400; color:#666; font-size:16px; margin-left:10px; }
+  .zone { position:absolute; border-radius:14px; }
+  .azure { left:330px; top:80px; width:1040px; height:700px; border:2px solid #0078d4; background:#f3f8fd; }
+  .rg { left:360px; top:140px; width:980px; height:610px; border:2px dashed #6a8fb5; background:#fff; }
+  .zlabel { position:absolute; font-weight:700; font-size:15px; }
+  .node { position:absolute; width:210px; text-align:center; font-size:14px; }
+  .node .ico { width:86px; height:86px; margin:0 auto 6px; }
+  .node b { display:block; font-size:15px; }
+  .node span { color:#555; font-size:12.5px; }
+  .card { position:absolute; border:1.5px solid #c9d6e3; border-radius:12px; background:#fafcff; }
+  svg.lines { position:absolute; left:0; top:0; z-index:1; }
+  .tag { position:absolute; background:#fff; font-size:12px; color:#333; padding:1px 6px; border-radius:6px; border:1px solid #ddd; }
+</style></head>
+<body><div id="c">
+<h1>DimDim — Arquitetura da solução <small>Azure App Service + Azure SQL Database + Application Insights</small></h1>
+
+<div class="zone azure"></div>
+<div class="zlabel" style="left:350px;top:90px;color:#0078d4">Microsoft Azure — Assinatura Azure for Students (Brazil South)</div>
+<div class="zone rg"></div>
+<div class="zlabel" style="left:380px;top:150px;color:#3d6a96">Resource Group: rg-dimdim-webapp</div>
+
+<!-- App Service Plan card -->
+<div class="card" style="left:400px;top:200px;width:300px;height:300px"></div>
+<div class="zlabel" style="left:415px;top:208px;font-size:13px;color:#555">App Service Plan B1 (Linux) — plan-dimdim</div>
+
+<svg class="lines" width="1400" height="820">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+        <marker id="p" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a3fd1"/></marker></defs>
+  <!-- usuario -> webapp -->
+  <line x1="200" y1="330" x2="470" y2="330" stroke="#333" stroke-width="2.5" marker-end="url(#a)"/>
+  <!-- dev -> webapp (deploy) -->
+  <path d="M200,620 L330,620 L330,420 L470,420" fill="none" stroke="#333" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#a)"/>
+  <!-- dev -> recursos (cli) -->
+  <path d="M200,660 L358,660" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#a)"/>
+  <!-- webapp -> sql -->
+  <line x1="660" y1="340" x2="1040" y2="340" stroke="#333" stroke-width="2.5" marker-end="url(#a)"/>
+  <!-- webapp -> appinsights -->
+  <path d="M600,440 L600,590 L780,590" fill="none" stroke="#7a3fd1" stroke-width="2.5" marker-end="url(#p)"/>
+  <!-- appinsights -> law -->
+  <line x1="980" y1="590" x2="1080" y2="590" stroke="#7a3fd1" stroke-width="2.5" marker-end="url(#p)"/>
+</svg>
+
+<div class="tag" style="left:250px;top:300px">HTTPS</div>
+<div class="tag" style="left:215px;top:585px">az webapp deploy (zip)</div>
+<div class="tag" style="left:205px;top:668px">az CLI: cria todos os recursos</div>
+<div class="tag" style="left:745px;top:310px">EF Core · TDS 1433 (Encrypt=True)</div>
+<div class="tag" style="left:610px;top:520px">telemetria: requests, exceptions, SQL dependencies</div>
+
+<!-- Usuarios -->
+<div class="node" style="left:20px;top:255px">
+  <svg class="ico" viewBox="0 0 64 64"><circle cx="32" cy="20" r="12" fill="#3a3a3a"/><path d="M8,58 C8,40 56,40 56,58 Z" fill="#3a3a3a"/><circle cx="50" cy="16" r="9" fill="#ffe600" stroke="#3a3a3a" stroke-width="2"/></svg>
+  <b>Clientes / funcionários DimDim</b><span>Navegador (front-end MVC)<br>e consumidores da API JSON</span>
+</div>
+
+<!-- Dev -->
+<div class="node" style="left:20px;top:560px">
+  <svg class="ico" viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="34" rx="4" fill="#3a3a3a"/><rect x="10" y="14" width="44" height="26" fill="#1e1e1e"/><text x="14" y="32" fill="#7fd" font-size="11" font-family="monospace">$ az</text><rect x="2" y="46" width="60" height="6" rx="2" fill="#777"/></svg>
+  <b>Equipe (consultoria)</b><span>Azure CLI + .NET SDK + GitHub</span>
+</div>
+
+<!-- Web App -->
+<div class="node" style="left:445px;top:250px">
+  <svg class="ico" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="#0078d4"/><circle cx="32" cy="32" r="20" fill="none" stroke="#fff" stroke-width="3"/><ellipse cx="32" cy="32" rx="9" ry="20" fill="none" stroke="#fff" stroke-width="3"/><line x1="12" y1="32" x2="52" y2="32" stroke="#fff" stroke-width="3"/><circle cx="47" cy="45" r="7" fill="#50e6ff"/></svg>
+  <b>Azure Web App</b><span>app-dimdim-&lt;rm&gt;<br>ASP.NET Core MVC · .NET 10<br>Telas de Clientes/Contas + /api</span>
+</div>
+
+<!-- SQL -->
+<div class="card" style="left:1010px;top:200px;width:300px;height:300px"></div>
+<div class="zlabel" style="left:1025px;top:208px;font-size:13px;color:#555">Azure SQL logical server — sql-dimdim-&lt;rm&gt;</div>
+<div class="node" style="left:1055px;top:245px">
+  <svg class="ico" viewBox="0 0 64 64"><ellipse cx="32" cy="12" rx="22" ry="8" fill="#0063b1"/><path d="M10,12 V50 C10,60 54,60 54,50 V12 C54,20 10,20 10,12 Z" fill="#0078d4"/><text x="18" y="42" fill="#fff" font-size="15" font-weight="700" font-family="Arial">SQL</text></svg>
+  <b>Azure SQL Database</b><span>dimdimdb · Basic (PaaS, não containerizado)<br>CLIENTE 1 ──&lt; N CONTA<br>Firewall: serviços Azure + IP da equipe</span>
+</div>
+
+<!-- App Insights -->
+<div class="node" style="left:780px;top:540px">
+  <svg class="ico" viewBox="0 0 64 64"><path d="M32,4 C17,4 10,15 10,25 C10,34 17,38 20,45 H44 C47,38 54,34 54,25 C54,15 47,4 32,4 Z" fill="#7a3fd1"/><rect x="22" y="48" width="20" height="5" rx="2" fill="#555"/><rect x="24" y="55" width="16" height="4" rx="2" fill="#555"/><rect x="24" y="24" width="4" height="14" fill="#fff"/><rect x="30" y="18" width="4" height="20" fill="#fff"/><rect x="36" y="28" width="4" height="10" fill="#fff"/></svg>
+  <b>Application Insights</b><span>appi-dimdim<br>Live Metrics, Application Map,<br>Performance, Failures, Logs</span>
+</div>
+
+<!-- Log Analytics -->
+<div class="node" style="left:1090px;top:540px">
+  <svg class="ico" viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="8" fill="#0078d4"/><rect x="16" y="34" width="7" height="14" fill="#fff"/><rect x="28" y="24" width="7" height="24" fill="#fff"/><rect x="40" y="16" width="7" height="32" fill="#fff"/></svg>
+  <b>Log Analytics Workspace</b><span>law-dimdim<br>armazena a telemetria (KQL)</span>
+</div>
+</div></body></html>

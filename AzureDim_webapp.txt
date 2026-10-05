@@ -1,0 +1,12 @@
+Grupo: AzureDim
+
+Integrantes:
+- Erick Bernardes Bradaschia - RM 565733
+- Gabriel Santos Claudino - RM 564054
+- Kaiky de Oliveira Silva - RM 566067
+- Lucas Fortes de Lima - RM 559523
+- Jonathan Moreira Gomes - RM 565060
+
+Link do GitHub: COLE_AQUI_O_LINK_DO_GITHUB
+
+Link do Vídeo: COLE_AQUI_O_LINK_DO_VIDEO

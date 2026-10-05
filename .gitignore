@@ -1,0 +1,8 @@
+bin/
+obj/
+publish/
+app.zip
+.env
+*.user
+.vs/
+.DS_Store

@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Início";
+}
+
+<div class="p-4 mb-4 dd-card">
+    <h1 class="fw-bold">Banco DimDim</h1>
+    <p class="lead mb-0">Cadastro de clientes e contas, rodando 100% na nuvem Microsoft Azure.</p>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="p-4 dd-card h-100">
+            <div class="text-muted">Clientes</div>
+            <div class="dd-kpi">@ViewBag.TotalClientes</div>
+            <a class="btn btn-dd btn-sm mt-2" asp-controller="Clientes" asp-action="Index">Gerenciar clientes</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 dd-card h-100">
+            <div class="text-muted">Contas</div>
+            <div class="dd-kpi">@ViewBag.TotalContas</div>
+            <a class="btn btn-dd btn-sm mt-2" asp-controller="Contas" asp-action="Index">Gerenciar contas</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 dd-card h-100">
+            <div class="text-muted">Saldo total sob custódia</div>
+            <div class="dd-kpi">@(((decimal)ViewBag.SaldoTotal).ToString("C", new System.Globalization.CultureInfo("pt-BR")))</div>
+        </div>
+    </div>
+</div>
+
+<div class="p-4 dd-card">
+    <h5 class="fw-bold">Arquitetura</h5>
+    <ul class="mb-0">
+        <li><strong>Azure App Service (Web App Linux, .NET 10)</strong> — esta aplicação ASP.NET Core MVC</li>
+        <li><strong>Azure SQL Database</strong> — tabelas <code>CLIENTE</code> e <code>CONTA</code> (1:N)</li>
+        <li><strong>Application Insights</strong> — requisições, falhas e cada comando SQL enviado ao banco</li>
+        <li>API JSON: <code>/api/clientes</code> e <code>/api/contas</code></li>
+    </ul>
+</div>

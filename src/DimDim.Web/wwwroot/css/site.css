@@ -1,0 +1,25 @@
+:root {
+    --dd-amarelo: #ffe600;
+    --dd-grafite: #3a3a3a;
+}
+
+html { font-size: 15px; position: relative; min-height: 100%; }
+body { background: #f6f6f2; color: var(--dd-grafite); margin-bottom: 70px; }
+
+.dd-nav { background: var(--dd-amarelo); }
+.dd-nav .nav-link { color: var(--dd-grafite); font-weight: 600; }
+.dd-nav .nav-link:hover { text-decoration: underline; }
+.dd-brand { display: flex; align-items: center; color: var(--dd-grafite); font-weight: 700; }
+.dd-logo {
+    display: inline-flex; align-items: center; justify-content: center; text-align: center;
+    width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--dd-grafite);
+    font-size: .8rem; line-height: .85; font-weight: 800; border: 3px solid var(--dd-grafite);
+}
+
+.dd-card { background: #fff; border: 0; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.dd-kpi { font-size: 2rem; font-weight: 800; }
+.btn-dd { background: var(--dd-grafite); color: #fff; }
+.btn-dd:hover { background: #000; color: var(--dd-amarelo); }
+.table thead th { background: var(--dd-grafite); color: #fff; }
+
+.footer { position: absolute; bottom: 0; width: 100%; background: #fff; }

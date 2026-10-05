@@ -1,0 +1,39 @@
+@model List<Conta>
+@{
+    ViewData["Title"] = "Contas";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0">Contas</h2>
+    <a class="btn btn-dd" asp-action="Create">+ Abrir conta</a>
+</div>
+
+<div class="dd-card p-2 table-responsive">
+    <table class="table table-hover align-middle mb-0">
+        <thead>
+            <tr><th>ID</th><th>Agência</th><th>Número</th><th>Tipo</th><th class="text-end">Saldo</th><th>Cliente</th><th></th></tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr><td colspan="7" class="text-center text-muted py-4">Nenhuma conta aberta.</td></tr>
+            }
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.Agencia</td>
+                    <td>@c.Numero</td>
+                    <td>@c.Tipo</td>
+                    <td class="text-end">@c.Saldo.ToString("N2")</td>
+                    <td><a asp-controller="Clientes" asp-action="Details" asp-route-id="@c.ClienteId">@c.Cliente?.Nome</a></td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@c.Id">Ver</a>
+                        <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@c.Id">Editar</a>
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@c.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

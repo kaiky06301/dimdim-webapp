@@ -1,0 +1,14 @@
+@model Conta
+@{
+    ViewData["Title"] = "Encerrar conta";
+}
+
+<h2 class="fw-bold mb-3">Encerrar conta</h2>
+<div class="dd-card p-4">
+    <p>Confirma a exclusão da conta <strong>@Model.Agencia / @Model.Numero</strong> de <strong>@Model.Cliente?.Nome</strong>
+       (saldo R$ @Model.Saldo.ToString("N2"))?</p>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a class="btn btn-link" asp-action="Index">Cancelar</a>
+    </form>
+</div>

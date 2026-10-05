@@ -1,0 +1,32 @@
+@model Conta
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="mb-3">
+    <label asp-for="ClienteId" class="form-label"></label>
+    <select asp-for="ClienteId" asp-items="(SelectList)ViewBag.Clientes" class="form-select">
+        <option value="">-- escolha o cliente --</option>
+    </select>
+    <span asp-validation-for="ClienteId" class="text-danger"></span>
+</div>
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <label asp-for="Agencia" class="form-label"></label>
+        <input asp-for="Agencia" class="form-control" maxlength="4" />
+        <span asp-validation-for="Agencia" class="text-danger"></span>
+    </div>
+    <div class="col-md-3 mb-3">
+        <label asp-for="Numero" class="form-label"></label>
+        <input asp-for="Numero" class="form-control" />
+        <span asp-validation-for="Numero" class="text-danger"></span>
+    </div>
+    <div class="col-md-3 mb-3">
+        <label asp-for="Tipo" class="form-label"></label>
+        <select asp-for="Tipo" asp-items="(SelectList)ViewBag.Tipos" class="form-select"></select>
+        <span asp-validation-for="Tipo" class="text-danger"></span>
+    </div>
+    <div class="col-md-3 mb-3">
+        <label asp-for="Saldo" class="form-label">Saldo (R$)</label>
+        <input asp-for="Saldo" class="form-control" step="0.01" min="0" />
+        <span asp-validation-for="Saldo" class="text-danger"></span>
+    </div>
+</div>

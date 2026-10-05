@@ -1,0 +1,39 @@
+@model List<Cliente>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0">Clientes</h2>
+    <a class="btn btn-dd" asp-action="Create">+ Novo cliente</a>
+</div>
+
+<div class="dd-card p-2 table-responsive">
+    <table class="table table-hover align-middle mb-0">
+        <thead>
+            <tr><th>ID</th><th>Nome</th><th>CPF</th><th>E-mail</th><th>Telefone</th><th>Contas</th><th></th></tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr><td colspan="7" class="text-center text-muted py-4">Nenhum cliente cadastrado.</td></tr>
+            }
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.Nome</td>
+                    <td>@c.Cpf</td>
+                    <td>@c.Email</td>
+                    <td>@c.Telefone</td>
+                    <td>@c.Contas.Count</td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@c.Id">Ver</a>
+                        <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@c.Id">Editar</a>
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@c.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

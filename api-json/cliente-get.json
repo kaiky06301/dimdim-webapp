@@ -1,0 +1,14 @@
+{
+  "metodo": "GET",
+  "url": "https://app-dimdim-rm566067.azurewebsites.net/api/clientes/1",
+  "observacao": "GET /api/clientes (sem id) lista todos os clientes",
+  "resposta_200": {
+    "id": 1,
+    "nome": "Steve Jobs",
+    "cpf": "12345678901",
+    "email": "steve.jobs@dimdim.com.br",
+    "telefone": "11999990000",
+    "dataCadastro": "2026-10-05T14:00:00",
+    "qtdContas": 1
+  }
+}
