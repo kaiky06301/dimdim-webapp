@@ -1,6 +1,6 @@
 {
   "metodo": "DELETE",
-  "url": "https://app-dimdim-rm566067.azurewebsites.net/api/contas/1",
+  "url": "https://app-dimdim-rm559523.azurewebsites.net/api/contas/1",
   "corpo": null,
   "resposta": "204 No Content - conta removida",
   "resposta_404": "Not Found - id inexistente"

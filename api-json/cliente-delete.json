@@ -1,6 +1,6 @@
 {
   "metodo": "DELETE",
-  "url": "https://app-dimdim-rm566067.azurewebsites.net/api/clientes/1",
+  "url": "https://app-dimdim-rm559523.azurewebsites.net/api/clientes/1",
   "corpo": null,
   "resposta": "204 No Content - cliente removido (as contas dele saem junto: ON DELETE CASCADE)",
   "resposta_404": "Not Found - id inexistente"

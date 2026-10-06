@@ -1,6 +1,6 @@
 {
   "metodo": "GET",
-  "url": "https://app-dimdim-rm566067.azurewebsites.net/api/contas/1",
+  "url": "https://app-dimdim-rm559523.azurewebsites.net/api/contas/1",
   "observacao": "GET /api/contas (sem id) lista todas as contas",
   "resposta_200": {
     "id": 1,

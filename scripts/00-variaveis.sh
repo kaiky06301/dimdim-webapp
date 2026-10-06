@@ -6,7 +6,7 @@
 # e Web App precisam ser únicos no mundo inteiro).
 # =====================================================================
 
-export RM="${RM:-rm566067}"
+export RM="${RM:-rm559523}"
 export LOCATION="${LOCATION:-brazilsouth}"          # assinatura Students: se recusar, use mexicocentral
 
 export RG="rg-dimdim-webapp"

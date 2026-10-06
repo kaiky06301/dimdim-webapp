@@ -12,7 +12,7 @@
 | Lucas Fortes de Lima | 559523 |
 | Jonathan Moreira Gomes | 565060 |
 
-**Vídeo com as evidências:** COLE_AQUI_O_LINK_DO_VIDEO
+**Vídeo com as evidências:** https://youtu.be/KVN07HfIc8U
 
 ---
 
@@ -113,13 +113,13 @@ Em `scripts/00-variaveis.sh` o RM entra no nome do SQL Server e do Web App, que 
 export RM=rm123456
 ```
 
-Se a assinatura recusar a região `brazilsouth`, use `export LOCATION=mexicocentral`.
+A assinatura **Azure for Students** só libera algumas regiões (mexicocentral, chilecentral, eastus, eastus2, northcentralus) e recusa a `brazilsouth`. Por isso, na implantação do vídeo usamos `LOCATION=mexicocentral` (passo 5.4).
 
 ### 5.4 Criar os recursos na Azure
 
 ```bash
 chmod +x scripts/*.sh
-./scripts/01-criar-recursos.sh
+LOCATION=mexicocentral ./scripts/01-criar-recursos.sh
 ```
 
 O script pede a senha do administrador do banco (mínimo 8 caracteres com maiúscula, minúscula, número e símbolo) e cria:
